@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Spaceship.png"
+      "filename" : "New Piskel (3).png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "New Piskel (4).png",
       "scale" : "2x"
     },
     {
