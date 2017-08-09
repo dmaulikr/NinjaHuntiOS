@@ -13,6 +13,7 @@ struct PhysicsCategory {
     static let All       : UInt32 = UInt32.max
     static let Monster   : UInt32 = 0b1       // 1
     static let Projectile: UInt32 = 0b10      // 2
+    static let Player    : UInt32 = 0b100
 }
 
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
@@ -53,10 +54,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // 1
     let player = SKSpriteNode(imageNamed: "player")
-    let scoreBox = SKLabelNode(text: "Score: 0" )
+   
     let number = SKLabelNode(text: " 0 ")
-    var score = 0
     
+    var score = 0
+    var health = 10
+    
+    let scoreBox = SKLabelNode(text: "Score: 0" )
+    let healthBox = SKLabelNode(text: "Health: 10")
     
     override func didMove(to view: SKView) {
         
@@ -65,15 +70,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        
+        
         // 4
         addChild(player)
+        
+        
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+        player.physicsBody?.isDynamic = true
+        
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Player // 3
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Monster // 4
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None
+        
         
         scoreBox.position = CGPoint(x: size.width * 0.08 , y:size.height * 0.9)
         scoreBox.fontSize = 18
         scoreBox.fontColor = SKColor.blue
         addChild(scoreBox)
         
-        
+        healthBox.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
+        healthBox.fontSize = 18
+        healthBox.fontColor = SKColor.red
+        addChild(healthBox)
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -106,6 +125,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func monsterDidCollideWithPlayer(player: SKSpriteNode, monster:SKSpriteNode){
+        
+        print ("I'm hit!")
+        monster.removeFromParent()
+        health = health - 1
+        if (health == 0){
+            scene?.view?.isPaused = true
+            
+        }
+        healthBox.text = "Health " + String(health)
+        
+    }
+    
     
     func addMonster() {
         
@@ -125,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
         monster.physicsBody?.isDynamic = true // 2
         monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster // 3
-        monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
+        monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile | PhysicsCategory.Player // 4
         monster.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
         
         // Determine speed of the monster
@@ -135,7 +167,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: player.position, duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         monster.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
         
         
         
@@ -189,7 +220,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
+  
         // 1
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
@@ -201,6 +232,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
+        
+        if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) && (secondBody.categoryBitMask & PhysicsCategory.Player != 0 )) {
+            if let monster = firstBody.node as? SKSpriteNode, let
+                player = secondBody.node as? SKSpriteNode {
+                monsterDidCollideWithPlayer(player: player, monster: monster)
+            }
+        }
         // 2
         if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
@@ -209,6 +247,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 projectileDidCollideWithMonster(projectile: projectile, monster: monster)
             }
         }
+        
+        
         
     }
     
