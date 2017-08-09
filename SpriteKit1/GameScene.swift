@@ -131,13 +131,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monster.removeFromParent()
         health = health - 1
         if (health == 0){
-            scene?.view?.isPaused = true
+            gameOver()
             
         }
         healthBox.text = "Health " + String(health)
         
     }
     
+    func gameOver(){
+        scene?.view?.isPaused = true
+    }
     
     func addMonster() {
         
