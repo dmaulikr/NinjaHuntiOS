@@ -57,23 +57,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     let number = SKLabelNode(text: " 0 ")
     
+    var level = 1
     var score = 0
     var health = 3
     
     let scoreBox = SKLabelNode(text: "Score: 0" )
     let healthBox = SKLabelNode(text: "Health: 3")
+    let levelBox = SKLabelNode(text: "Level 1")
   
     override func didMove(to view: SKView) {
         
-        // 2
         backgroundColor = SKColor.white
         
-        
-        // 3
+
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        
-        
-        // 4
         addChild(player)
         
         player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
@@ -84,15 +81,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.collisionBitMask = PhysicsCategory.None
         
         scoreBox.position = CGPoint(x: size.width * 0.08 , y:size.height * 0.9)
-        scoreBox.fontSize = 18
+        scoreBox.fontSize = 20
         scoreBox.fontColor = SKColor.blue
         addChild(scoreBox)
         
         healthBox.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
-        healthBox.fontSize = 18
+        healthBox.fontSize = 20
         healthBox.fontColor = SKColor.red
         addChild(healthBox)
         
+        levelBox.position = CGPoint(x:size.width * 0.5, y: size.height * 0.9)
+        levelBox.fontSize = 20
+        levelBox.fontColor = SKColor.green
+        addChild(levelBox)
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -137,8 +138,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver(){
-        scene?.view?.isPaused = true
         
+        scene?.view?.isPaused = true
         
         let gameOverBox = SKSpriteNode(color: SKColor.red, size: CGSize(width: 350, height :150))
         gameOverBox.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
@@ -153,11 +154,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newGameButton.position = CGPoint(x:size.width * 0.5, y: size.height * 0.45)
         newGameButton.zPosition = 11
         
-        
         addChild(gameOverBox)
         addChild(gameOverLabel)
         addChild(newGameButton)
-        
         
     }
     
@@ -198,7 +197,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         removeAllChildren()
         removeAllActions()
-        
         let gameScene = GameScene(size: self.size)
         self.scene!.view?.presentScene(gameScene)
         
@@ -215,11 +213,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 newGame()
             }
         }
+    
+    
     }
+    
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
-       
         // 1 - Choose one of the touches to work with
         guard let touch = touches.first else {
             return

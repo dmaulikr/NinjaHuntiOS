@@ -15,6 +15,12 @@
 		793FDC151F3A8F1E006C8CE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793FDC131F3A8F1E006C8CE1 /* LaunchScreen.storyboard */; };
 		793FDC201F3A8F1E006C8CE1 /* SpriteKit1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793FDC1F1F3A8F1E006C8CE1 /* SpriteKit1Tests.swift */; };
 		793FDC2B1F3A8F1E006C8CE1 /* SpriteKit1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793FDC2A1F3A8F1E006C8CE1 /* SpriteKit1UITests.swift */; };
+		793FDC4D1F3CD641006C8CE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793FDC4C1F3CD641006C8CE1 /* AdSupport.framework */; };
+		793FDC4F1F3CD7AB006C8CE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793FDC4E1F3CD7AB006C8CE1 /* SystemConfiguration.framework */; };
+		793FDC511F3CD7B8006C8CE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793FDC501F3CD7B8006C8CE1 /* StoreKit.framework */; };
+		793FDC531F3CD7BE006C8CE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793FDC521F3CD7BE006C8CE1 /* MediaPlayer.framework */; };
+		793FDC581F3CDBF3006C8CE1 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793FDC571F3CDBF3006C8CE1 /* GoogleMobileAds.framework */; };
+		793FDC5C1F3CF9D3006C8CE1 /* mapApp-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 793FDC5B1F3CF9D3006C8CE1 /* mapApp-Bridging-Header.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,13 @@
 		793FDC261F3A8F1E006C8CE1 /* SpriteKit1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteKit1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		793FDC2A1F3A8F1E006C8CE1 /* SpriteKit1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKit1UITests.swift; sourceTree = "<group>"; };
 		793FDC2C1F3A8F1E006C8CE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		793FDC4C1F3CD641006C8CE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		793FDC4E1F3CD7AB006C8CE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		793FDC501F3CD7B8006C8CE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		793FDC521F3CD7BE006C8CE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		793FDC571F3CDBF3006C8CE1 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		793FDC5B1F3CF9D3006C8CE1 /* mapApp-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "mapApp-Bridging-Header.m"; path = "../mapApp-Bridging-Header.m"; sourceTree = "<group>"; };
+		793FDC5D1F3CF9F5006C8CE1 /* SpriteKit1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpriteKit1-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +69,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793FDC581F3CDBF3006C8CE1 /* GoogleMobileAds.framework in Frameworks */,
+				793FDC531F3CD7BE006C8CE1 /* MediaPlayer.framework in Frameworks */,
+				793FDC511F3CD7B8006C8CE1 /* StoreKit.framework in Frameworks */,
+				793FDC4F1F3CD7AB006C8CE1 /* SystemConfiguration.framework in Frameworks */,
+				793FDC4D1F3CD641006C8CE1 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +101,7 @@
 				793FDC1E1F3A8F1E006C8CE1 /* SpriteKit1Tests */,
 				793FDC291F3A8F1E006C8CE1 /* SpriteKit1UITests */,
 				793FDC021F3A8F1E006C8CE1 /* Products */,
+				793FDC4B1F3CD641006C8CE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +118,7 @@
 		793FDC031F3A8F1E006C8CE1 /* SpriteKit1 */ = {
 			isa = PBXGroup;
 			children = (
+				793FDC5B1F3CF9D3006C8CE1 /* mapApp-Bridging-Header.m */,
 				793FDC441F3A9118006C8CE1 /* Sounds */,
 				793FDC041F3A8F1E006C8CE1 /* AppDelegate.swift */,
 				793FDC0A1F3A8F1E006C8CE1 /* GameScene.swift */,
@@ -134,6 +154,19 @@
 			children = (
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		793FDC4B1F3CD641006C8CE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				793FDC5D1F3CF9F5006C8CE1 /* SpriteKit1-Bridging-Header.h */,
+				793FDC571F3CDBF3006C8CE1 /* GoogleMobileAds.framework */,
+				793FDC521F3CD7BE006C8CE1 /* MediaPlayer.framework */,
+				793FDC501F3CD7B8006C8CE1 /* StoreKit.framework */,
+				793FDC4E1F3CD7AB006C8CE1 /* SystemConfiguration.framework */,
+				793FDC4C1F3CD641006C8CE1 /* AdSupport.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +238,7 @@
 					793FDC001F3A8F1D006C8CE1 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 97QATJGKAY;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					793FDC1A1F3A8F1E006C8CE1 = {
@@ -276,6 +310,7 @@
 				793FDC0B1F3A8F1E006C8CE1 /* GameScene.swift in Sources */,
 				793FDC0D1F3A8F1E006C8CE1 /* GameViewController.swift in Sources */,
 				793FDC051F3A8F1E006C8CE1 /* AppDelegate.swift in Sources */,
+				793FDC5C1F3CF9D3006C8CE1 /* mapApp-Bridging-Header.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,11 +462,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 97QATJGKAY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpriteKit1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = johndwyer.SpriteKit1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpriteKit1-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -440,11 +482,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 97QATJGKAY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpriteKit1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = johndwyer.SpriteKit1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpriteKit1-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -526,6 +574,7 @@
 				793FDC311F3A8F1E006C8CE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		793FDC321F3A8F1E006C8CE1 /* Build configuration list for PBXNativeTarget "SpriteKit1Tests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +583,7 @@
 				793FDC341F3A8F1E006C8CE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		793FDC351F3A8F1E006C8CE1 /* Build configuration list for PBXNativeTarget "SpriteKit1UITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +592,7 @@
 				793FDC371F3A8F1E006C8CE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
