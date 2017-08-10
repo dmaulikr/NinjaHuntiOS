@@ -61,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var health = 3
     
     let scoreBox = SKLabelNode(text: "Score: 0" )
-    let healthBox = SKLabelNode(text: "Health: 10")
+    let healthBox = SKLabelNode(text: "Health: 3")
   
     override func didMove(to view: SKView) {
         
@@ -106,8 +106,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
-    
     func random() -> CGFloat {
         return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
     }
@@ -130,11 +128,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print ("I'm hit!")
         monster.removeFromParent()
         health = health - 1
+        healthBox.text = "Health " + String(health)
+        
         if (health == 0){
             gameOver()
-            
         }
-        healthBox.text = "Health " + String(health)
         
     }
     
@@ -151,6 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.zPosition = 11
         
         let newGameButton = SKSpriteNode(imageNamed: "newgame")
+        newGameButton.name = "NewGameButton"
         newGameButton.position = CGPoint(x:size.width * 0.5, y: size.height * 0.45)
         newGameButton.zPosition = 11
         
@@ -195,6 +194,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func newGame(){
+        
+        removeAllChildren()
+        removeAllActions()
+        
+        let gameScene = GameScene(size: self.size)
+        self.scene!.view?.presentScene(gameScene)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches{
+            let location = touch.location(in: self)
+            let touchNode = atPoint(location)
+            print("\(touchNode.name)")
+            
+            if touchNode.name == "NewGameButton"{
+                print ("New Game")
+                newGame()
+            }
+        }
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
