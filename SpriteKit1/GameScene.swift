@@ -58,15 +58,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let number = SKLabelNode(text: " 0 ")
     
     var score = 0
-    var health = 10
+    var health = 3
     
     let scoreBox = SKLabelNode(text: "Score: 0" )
     let healthBox = SKLabelNode(text: "Health: 10")
-    
+  
     override func didMove(to view: SKView) {
         
         // 2
         backgroundColor = SKColor.white
+        
         
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
@@ -75,14 +76,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 4
         addChild(player)
         
-        
         player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
         player.physicsBody?.isDynamic = true
         
         player.physicsBody?.categoryBitMask = PhysicsCategory.Player // 3
         player.physicsBody?.contactTestBitMask = PhysicsCategory.Monster // 4
         player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        
         
         scoreBox.position = CGPoint(x: size.width * 0.08 , y:size.height * 0.9)
         scoreBox.fontSize = 18
@@ -93,6 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         healthBox.fontSize = 18
         healthBox.fontColor = SKColor.red
         addChild(healthBox)
+        
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -140,6 +140,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOver(){
         scene?.view?.isPaused = true
+        
+        
+        let gameOverBox = SKSpriteNode(color: SKColor.red, size: CGSize(width: 350, height :150))
+        gameOverBox.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
+        gameOverBox.zPosition = 10
+        
+        let gameOverLabel = SKLabelNode(text: "Game Over")
+        gameOverLabel.position = CGPoint(x: size.width * 0.5 ,y: size.height * 0.6)
+        gameOverLabel.zPosition = 11
+        
+        let newGameButton = SKSpriteNode(imageNamed: "newgame")
+        newGameButton.position = CGPoint(x:size.width * 0.5, y: size.height * 0.45)
+        newGameButton.zPosition = 11
+        
+        
+        addChild(gameOverBox)
+        addChild(gameOverLabel)
+        addChild(newGameButton)
+        
+        
     }
     
     func addMonster() {
